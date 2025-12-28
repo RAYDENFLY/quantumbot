@@ -1,11 +1,21 @@
 import swaggerJsdoc from 'swagger-jsdoc';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const options = {
   definition: {
     openapi: '3.0.0',
     info: { title: 'Quantum Bot API', version: '1.0.0' },
   },
-  apis: ['./api/*.js'],
+  apis: [
+    path.join(__dirname, 'signals.js'),
+    path.join(__dirname, 'research.js'),
+    path.join(__dirname, 'learning.js'),
+    path.join(__dirname, 'academy.js'),
+  ],
 };
 
 const specs = swaggerJsdoc(options);
