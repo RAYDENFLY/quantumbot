@@ -55,6 +55,11 @@ app.post('/api/academy', academyHandler);
 
 app.get('/api/docs', docsHandler);
 
+// Ping endpoint for uptime monitoring
+app.get('/ping', (req, res) => {
+  res.status(200).send('OK');
+});
+
 const PORT = process.env.PORT || 8780;
 app.listen(PORT, () => {
   console.log(`API server running on port ${PORT}`);
